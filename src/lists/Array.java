@@ -1,16 +1,18 @@
 package lists;
 
 public class Array implements List {
+    private int size = 0;
+    
     public int size() {
-    return 0;
+        return size;
     }
     
     public boolean isEmpty() {
-    return false;     
+        return size == 0;     
     }
     
     public String get(int index){
-    return null;
+        return null;
     }
     
     public void add(String value, int index){
