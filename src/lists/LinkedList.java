@@ -1,7 +1,7 @@
 package lists;
 
 public class LinkedList implements List {
-    public static class Node {
+    private static class Node {
         public Node next = null;
         public String value;
         
