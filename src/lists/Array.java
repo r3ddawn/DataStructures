@@ -89,14 +89,32 @@ public class Array implements List {
     }
     
     public void print() {
-        for (int x = 0; x < array.length; x++) {
+        for (int x = 0; x < size; x++) {
             System.out.println(array[x]);
         }
     }
     
-    private void checkBounds (int index) {
+    private void checkBounds(int index) {
         if ( size == 0 || index > size || index < 0) {
             throw new IndexOutOfBoundsException();
+        }
+    }
+    
+    private boolean isArrayResizeNeeded() {
+        return array.length == size || array.length - 1 == size || array.length < size || array.length > size * size;
+    }
+    
+    private void resizeArray() {
+        String[] temp = array;
+        array = new String[size + size/2];
+        
+        // Will reassign all values from temp array into the newly sized array
+        // All new empty positions will be "0" (I will be keeping track of size seperatly)
+        for (int x = 0; x < array.length; x++) {
+            if (x < temp.length){
+                array[x] = temp[x];
+            }
+            array[x] = "0";
         }
     }
 }
