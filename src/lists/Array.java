@@ -16,6 +16,7 @@ public class Array implements List {
     
     @Override
     public String get(int index){
+        checkBounds(index);
         return array[index];
     }
     
@@ -27,9 +28,9 @@ public class Array implements List {
             size++;
             return;
         }
+        checkBounds(index);
         // New array to move values
-        String[] temp = new String[array.length];
-        temp = array;
+        String[] temp = array;
         
         array = new String[size + 1];
 
@@ -53,8 +54,7 @@ public class Array implements List {
             return;
         }
         // New array to move values
-        String[] temp = new String[array.length];
-        temp = array;
+        String[] temp = array;  
         // Resizing my class array
         array = new String[size + 1];
         // Moving values back
@@ -68,9 +68,9 @@ public class Array implements List {
     
     @Override
     public void delete(int index){
+        checkBounds(index);
         // New array to move values
-        String[] temp = new String[array.length];
-        temp = array;
+        String[] temp = array;
         // Resizing array to avoid memory issues
         array = new String[size - 1];
         
@@ -89,8 +89,36 @@ public class Array implements List {
     }
     
     public void print() {
-        for (int x = 0; x < array.length; x++) {
+        for (int x = 0; x < size; x++) {
             System.out.println(array[x]);
+        }
+    }
+    
+    private void checkBounds(int index) {
+        if ( size == 0 || index > size || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+    
+    private boolean isArrayResizeNeeded() {
+        return array.length == size || array.length - 1 == size || array.length < size || array.length > size * size;
+    }
+    
+    private void resizeArray() {
+        if (size == 0) {
+            array = new String[1];
+            return;
+        }
+        String[] temp = array;
+        array = new String[size + size/2];
+        
+        // Will reassign all values from temp array into the newly sized array
+        // All new empty positions will be "0" (I will be keeping track of size seperatly)
+        for (int x = 0; x < array.length; x++) {
+            if (x < temp.length){
+                array[x] = temp[x];
+            }
+            array[x] = "0";
         }
     }
 }
