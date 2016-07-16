@@ -16,6 +16,7 @@ public class Array implements List {
     
     @Override
     public String get(int index){
+        checkBounds(index);
         return array[index];
     }
     
@@ -27,6 +28,7 @@ public class Array implements List {
             size++;
             return;
         }
+        checkBounds(index);
         // New array to move values
         String[] temp = new String[array.length];
         temp = array;
@@ -68,6 +70,7 @@ public class Array implements List {
     
     @Override
     public void delete(int index){
+        checkBounds(index);
         // New array to move values
         String[] temp = new String[array.length];
         temp = array;
@@ -91,6 +94,12 @@ public class Array implements List {
     public void print() {
         for (int x = 0; x < array.length; x++) {
             System.out.println(array[x]);
+        }
+    }
+    
+    private void checkBounds (int index) {
+        if ( size == 0 || index > size || index < 0) {
+            throw new IndexOutOfBoundsException();
         }
     }
 }
