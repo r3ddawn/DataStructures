@@ -30,8 +30,7 @@ public class Array implements List {
         }
         checkBounds(index);
         // New array to move values
-        String[] temp = new String[array.length];
-        temp = array;
+        String[] temp = array;
         
         array = new String[size + 1];
 
@@ -55,8 +54,7 @@ public class Array implements List {
             return;
         }
         // New array to move values
-        String[] temp = new String[array.length];
-        temp = array;
+        String[] temp = array;  
         // Resizing my class array
         array = new String[size + 1];
         // Moving values back
@@ -72,8 +70,7 @@ public class Array implements List {
     public void delete(int index){
         checkBounds(index);
         // New array to move values
-        String[] temp = new String[array.length];
-        temp = array;
+        String[] temp = array;
         // Resizing array to avoid memory issues
         array = new String[size - 1];
         
