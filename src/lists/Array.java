@@ -105,6 +105,10 @@ public class Array implements List {
     }
     
     private void resizeArray() {
+        if (size == 0) {
+            array = new String[1];
+            return;
+        }
         String[] temp = array;
         array = new String[size + size/2];
         
