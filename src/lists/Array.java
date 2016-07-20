@@ -10,7 +10,7 @@ public class Array implements List {
     
     @Override
     public boolean isEmpty() {
-        return array.length == 0;     
+        return size() == 0;     
     }
     
     @Override
@@ -21,7 +21,7 @@ public class Array implements List {
     
     @Override
     public void add(String value, int index){
-        if (array.length == 0 && index == 0) {
+        if (size() == 0 && index == 0) {
             array = new String[1];
             array[index] = value;
             return;
@@ -30,13 +30,13 @@ public class Array implements List {
         // New array to move values
         String[] temp = array;
         
-        array = new String[array.length + 1];
+        array = new String[size() + 1];
 
         for (int x = 0; x < index; x++) {
             array[x] = temp[x];
         }
         array[index] = value;
-        for (int x = index + 1; x < array.length; x++) {
+        for (int x = index + 1; x < size(); x++) {
             // Have to subtract 1 from temp index because of the new value added
             array[x] = temp[x - 1];
         }
@@ -44,7 +44,7 @@ public class Array implements List {
     
     @Override
     public void add(String value){
-        if (array.length == 0) {
+        if (size() == 0) {
             array = new String[1];
             array[0] = value;
             return;
@@ -52,13 +52,13 @@ public class Array implements List {
         // New array to move values
         String[] temp = array;  
         // Resizing my class array
-        array = new String[array.length + 1];
+        array = new String[size() + 1];
         // Moving values back
         for (int x = 0; x < temp.length; x++) {
             array[x] = temp[x];
         }
         // Adding new value to the array
-        array[array.length - 1] = value;
+        array[size() - 1] = value;
     }
     
     @Override
@@ -67,12 +67,12 @@ public class Array implements List {
         // New array to move values
         String[] temp = array;
         // Resizing array to avoid memory issues
-        array = new String[array.length - 1];
+        array = new String[size() - 1];
         
         for (int x = 0; x < index; x++) {
             array[x] = temp[x];
         }
-        for (int x = index; x < array.length; x++) {
+        for (int x = index; x < size(); x++) {
             array[x] = temp[x + 1];
         }
     }
@@ -83,13 +83,13 @@ public class Array implements List {
     }
     
     public void print() {
-        for (int x = 0; x < array.length; x++) {
+        for (int x = 0; x < size(); x++) {
             System.out.println(array[x]);
         }
     }
     
     private void checkBounds(int index) {
-        if ( array.length == 0 || index > array.length || index < 0) {
+        if ( size() == 0 || index > size() || index < 0) {
             throw new IndexOutOfBoundsException();
         }
     }
