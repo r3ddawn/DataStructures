@@ -10,7 +10,7 @@ public class LinkedList implements List {
         }
     }
     
-    private Node first, tail;
+    private Node head, tail;
     private int size;
     
     @Override
@@ -26,7 +26,7 @@ public class LinkedList implements List {
     @Override
     public String get(int index) {
         checkBounds(index);
-        Node current = first;
+        Node current = head;
         
         for (int i = 0; i < index && i < size; i++) {
             current = current.next;
@@ -39,9 +39,9 @@ public class LinkedList implements List {
         Node newNode = new Node(value);
         
         if (isEmpty()) {
-            first = newNode;
+            head = newNode;
         } else {
-            Node current = first;
+            Node current = head;
             
             for (int i = 0; i < size - 1; i++) {
                 current = current.next;
@@ -57,16 +57,16 @@ public class LinkedList implements List {
         Node newNode = new Node(value);
         
         if (isEmpty()) {
-            first = newNode;
+            head = newNode;
             size++;
             return;
         }
-        Node current = first;
-        Node previous = first;
+        Node current = head;
+        Node previous = head;
         
         if (index == 0) {
-            first = newNode;
-            first.next = current;
+            head = newNode;
+            head.next = current;
             size++;
         } else {
             for (int x = 0; x < size && x < index; x++) {
@@ -84,19 +84,19 @@ public class LinkedList implements List {
         checkBounds(index);
         // Tests and deletion for a list with only one value
         if (size == 1) {
-                first = null;
+                head = null;
                 size = 0;
                 return;
             }
-        // Test & deletion if the first index is being deleted
+        // Test & deletion if the head index is being deleted
         if (index == 0){
-                first = first.next;
+                head = head.next;
                 size--;
                 return;
         }
         // Deletion for all other indexes and sizes
-        Node indexNode = first;
-        Node previousIndexNode = first;
+        Node indexNode = head;
+        Node previousIndexNode = head;
         
         for (int i = 0; i < size - 1 && i < index; i++) {
             previousIndexNode = indexNode;
@@ -108,7 +108,7 @@ public class LinkedList implements List {
     
     @Override
     public void clear() {
-        first = null;
+        head = null;
         size = 0;
     }
     
