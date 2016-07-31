@@ -1,7 +1,7 @@
 package lists;
 
 public class LinkedList implements List {
-    private static class Node {
+    public static class Node {
         public Node next = null;
         public String value;
         
@@ -10,7 +10,7 @@ public class LinkedList implements List {
         }
     }
     
-    private Node head, tail;
+    public Node head, tail;
     private int size;
     
     @Override
