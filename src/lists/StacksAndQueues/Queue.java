@@ -12,15 +12,9 @@ public class Queue implements StacksAndQueues {
     
     @Override
     public String pop() {
-        String returnValue = mainStack.head.value;
-        
-        if (mainStack.size() > 0) {
-            mainStack.head = mainStack.head.next;
-            return returnValue;
-        } else {
-            mainStack = null;
-        }
-        return returnValue;
+        String temp = mainStack.get(0);
+        mainStack.delete(0);
+        return temp;
     }
     
     @Override

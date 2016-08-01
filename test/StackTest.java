@@ -29,7 +29,8 @@ public class StackTest {
         stack.print();
         
         assertEquals("Pop Me", stack.pop());
-//        stack.print();
+        assertEquals("Goodbye", stack.pop());
+        stack.print();
      
      }
 }

@@ -3,41 +3,35 @@ package lists.StacksAndQueues;
 import lists.LinkedList;
 
 public class Stack implements StacksAndQueues {
-    private LinkedList mainStack = new LinkedList();
+    private LinkedList mainQueue = new LinkedList();
     
     @Override
     public boolean isEmpty() {
-        return mainStack.isEmpty();
+        return mainQueue.isEmpty();
     }
     
     @Override
     public String pop() {
-        String returnValue = mainStack.head.value;
-        
-        if (mainStack.size() > 0) {
-            mainStack.head = mainStack.head.next;
-            return returnValue;
-        } else {
-            mainStack = null;
-        }
-        return returnValue;
+        String temp = mainQueue.get(0);
+        mainQueue.delete(0);
+        return temp;
     }
     
     @Override
     public void push(String value) {
-        if (mainStack.size() > 0) {
-        mainStack.add(value, 0);
+        if (mainQueue.size() > 0) {
+        mainQueue.add(value, 0);
         } else {
-            mainStack.add(value);
+            mainQueue.add(value);
         }
     }
     
     @Override
     public void clear() {
-        mainStack.clear();
+        mainQueue.clear();
     }
     
     public void print() {
-        mainStack.printList(mainStack);
+        mainQueue.printList(mainQueue);
     }
 }
