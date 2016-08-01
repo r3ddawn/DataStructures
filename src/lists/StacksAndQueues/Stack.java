@@ -14,18 +14,22 @@ public class Stack implements StacksAndQueues {
     public String pop() {
         String returnValue = mainStack.head.value;
         
-        if (mainStack.size() > 1) {
-        mainStack.head = mainStack.head.next;
-        return returnValue;
+        if (mainStack.size() > 0) {
+            mainStack.head = mainStack.head.next;
+            return returnValue;
         } else {
             mainStack = null;
-            return returnValue;
         }
+        return returnValue;
     }
     
     @Override
     public void push(String value) {
+        if (mainStack.size() > 0) {
         mainStack.add(value, 0);
+        } else {
+            mainStack.add(value);
+        }
     }
     
     @Override

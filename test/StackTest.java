@@ -12,20 +12,24 @@ public class StackTest {
          Stack stack = new Stack();
          
          stack.push("Hello");
-//         stack.push("Goodbye");
-//         stack.push("Pop Me");
+         stack.push("Goodbye");
+         stack.push("Pop Me");
+
+         stack.print();
      }
      
      @Test
-     public void pop() {
+     public void pushAndPop() {
         Stack stack = new Stack();
          
         stack.push("Hello");
-//         stack.push("Goodbye");
-//         stack.push("Pop Me");
+        stack.push("Goodbye");
+        stack.push("Pop Me");
+        
         stack.print();
-
-        assertEquals("Hello", stack.pop());
+        
+        assertEquals("Pop Me", stack.pop());
+//        stack.print();
      
      }
 }

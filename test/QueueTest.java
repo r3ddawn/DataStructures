@@ -8,7 +8,7 @@ import org.junit.Test;
  */
 public class QueueTest {
     @Test
-    public void pop() {
+    public void pushAndPop() {
         Queue queue = new Queue();
         
         queue.push("Hello");
